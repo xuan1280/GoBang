@@ -1,0 +1,46 @@
+body {
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+}
+
+h2 {
+	background-color: #D0892A;
+	height: 5%;
+	width: 100%; 
+    margin: 0px;
+	text-align: center;
+	font-family: "verdana";
+}
+
+.content {
+	background-color: #672D18;
+	height: 85%;
+	width: 100%;
+}
+
+.left {
+	float: left;
+	height: 100%;
+	width: 30%;
+}
+
+.right {
+	float: right;
+	height: 100%;
+	width: 20%;
+}
+
+#checkerboard {
+	float: center; 
+	height: 100%; 
+	width: auto;
+}
+
+footer {
+	background-color: yellow;
+	height: 10%; 
+	width: 100%;
+}
