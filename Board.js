@@ -1,11 +1,9 @@
-import './Intersection';
-import './ChessName';
 
 function Board(row, column) {
 	this.row = row;
 	this.column = column;
-	var chesses = setBoard(row, column);
-	setBoard = function (row, column) {
+	var chesses = createBoard(row, column);
+	createBoard = function (row, column) {
 		for (i in row) {
 			for (j in column) {
 				chesses[i][j] = new Intersection(ChessName.NULL);
