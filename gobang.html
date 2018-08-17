@@ -8,20 +8,20 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	
-	<body>
+	<body id="body">
 		<h2>五子棋遊戲</h2>
 		
 		<div class="content">
 			<div class="left">
 				<div >
 					<p>輪到:</p><br/>
-					<p id="playerName">白方<img id="chess" src="./white.png" style="height:20px;width:20px;margin-left:20px;"></p>
+					<p id="playerName">白方<img id="chess" src="pic/white.png"></p>
 				</div>
 				<button id="new" type="button">開始新局</button>
 				<button id="back" type="button">毀棋</button>
 			</div>
 			
-			<img id="checkerboard" src="1.jpg">
+			<img id="checkerboard" src="pic/1.jpg">
 		
 			<div class="right">
 				<p>right</p>
@@ -32,7 +32,7 @@
 			<p>關於作者</p>
 		</footer>
 	
-		<script type='text/javascript' src="./GoBang.js"></script>
-		<script type='text/javascript' src="./GameController.js"></script>
+		<script type='text/javascript' src="js/GameController.js"></script>
+		<script type='text/javascript' src="js/GoBang.js"></script>
 	</body>
 </html>

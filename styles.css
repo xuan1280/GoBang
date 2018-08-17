@@ -44,3 +44,9 @@ footer {
 	height: 10%; 
 	width: 100%;
 }
+
+#chess {
+	height: 20px;
+	width: 20px;
+	margin-left: 20px;
+}
