@@ -1,6 +1,7 @@
 document.getElementById("body").onload = function() {
     var painter = new Painter();
     painter.drawCheckerBoard();
+    painter.drawCircle();
     var goBang = new GoBang();
     var mainView = new MainView(goBang);
     goBang.setMainView(mainView);
