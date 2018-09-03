@@ -1,5 +1,5 @@
 var ChessName = {
-	EMPTY: {name: "EMPTY", code: 0, src: ""},
-	BLACK: {name: "BLACK", code: 1, src: "black.png"},
-	WHITE: {name: "WHITE", code: 2, src: "white.png"}
+	EMPTY: {color: "empty", code: 0, img: "-"},
+	BLACK: {color: "black", code: 1, img: "x"},
+	WHITE: {color: "white", code: 2, img: "o"}
 };

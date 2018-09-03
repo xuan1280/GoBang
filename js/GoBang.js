@@ -1,8 +1,9 @@
 function GoBang() {
     this.mainView;
-    this.currentPlayerSite = 0;
-    this.playerAmount = 2;
-    this.chessBoard = new Board(7, 7);
+	this.currentPlayer;
+	this.currentPlayerIndex = 0;
+	this.playerAmount = 2;
+    this.chessBoard = new Board();
     this.players = [];
     this.setPlayer1Name = function(name) {
         console.log("setPlayer1Name..." + name);
@@ -17,27 +18,36 @@ function GoBang() {
 		this.mainView = mainView;
 	};
 	this.init = function() {
+		this.chessBoard.initBoard(15, 15);
+		this.mainView.paintBoard();
 		this.mainView.onSetPlayer1Name();
 		this.mainView.onSetPlayer2Name();
 	};
 	this.startGame = function() {
 		console.log("startGame...");
-		do {
-			this.mainView.onSetChessPut(this.players[this.currentPlayerSite]);
-			turnNextPlayer();
-		} while(!this.chessBoard.hasLine());
+		this.currentPlayer = this.players[0];
+		this.mainView.onPlayerTurn(this.currentPlayer);
 	};
-	this.putDownChess = function(player, row, column) {
-        console.log("putDownChess...");
-		if(this.chessBoard.hasChess(row, column))
-			mainView.onChessPutFailed(player, row, column);
+	this.putDownChess = function(row, column) {
+		console.log("putDownChess..." + " on (" + row + ", " + column + ")");
+		if (this.chessBoard.hasChess(row, column))
+			this.mainView.onChessPutFailed(this.currentPlayer, row, column);
 		else {
-			this.chessBoard.setChessOnBoard(player.getChessName(), row, column);
-			this.mainView.onChessPutSuccessfully(player, row, column);
+			this.chessBoard.setChessOnBoard(this.currentPlayer.getChessName(), row, column);
+			this.mainView.onChessPutSuccessfully(this.currentPlayer, row, column);
 		}
+		if (!this.chessBoard.hasLine())
+			this.turnNextPlayer();
+		else
+			this.mainView.onGameOver(this.currentPlayer);
 	};
-	turnNextPlayer = function() {
+	this.turnNextPlayer = function() {
         console.log("turnNextPlayer...");
-		this.currentPlayerSite = (this.currentPlayerSite++) % this.playerAmount;
+		this.currentPlayer = this.players[++this.currentPlayerIndex % this.playerAmount];
+		this.mainView.onPlayerTurn(this.currentPlayer);
+	};
+	this.remove = function() {
+		var chessOrder = this.chessBoard.goBackAndGetChessOrder();
+		this.mainView.repaint(chessOrder);
 	};
 }

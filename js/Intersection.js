@@ -8,8 +8,8 @@ function Intersection(chessName, row , column) {
 	this.setChessName = function(chessName) {
 		this.chessName = chessName;
 	};
-	this.hasChess = function() {
-		return !(chessName == ChessName.NULL);
+	this.isEmpty = function() {
+		return this.chessName == ChessName.EMPTY;
 	};
 	this.setSite = function(row, column) {
 		this.row = row;
@@ -22,6 +22,6 @@ function Intersection(chessName, row , column) {
 		return this.column;
 	};
 	this.toString = function() {
-		return this.chessName.name + this.row.toString + this.column.toString;
+		return this.chessName.img;
 	}
 }
