@@ -52,7 +52,7 @@ function MainView(goBang) {
         document.getElementById("playerName").innerHTML = player.getName();
     };
     this.onChessPutFailed = function(player, row, column) {
-        console.log("{0} chess put failed, ({1}, {2}) has chess".format(player.getName(), row, column));
+        console.log(player.getName() + " put failed, (" + row + ", " + column + ") has chess");
     };
     this.onChessPutSuccessfully = function(player, row, column) {
         console.log(player.getName() + " put " + player.getChessName() + " on (" + row + ", " + column + ")");

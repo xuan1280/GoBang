@@ -4,7 +4,8 @@ function GoBang() {
 	this.currentPlayerIndex = 0;
 	this.playerAmount = 2;
     this.chessBoard = new Board();
-    this.players = [];
+	this.players = [];
+	this.isOver = false;
     this.setPlayer1Name = function(name) {
         console.log("setPlayer1Name..." + name);
         this.players[0] = new Player(name, ChessName.BLACK);
@@ -30,16 +31,18 @@ function GoBang() {
 	};
 	this.putDownChess = function(row, column) {
 		console.log("putDownChess..." + " on (" + row + ", " + column + ")");
-		if (this.chessBoard.hasChess(row, column))
+		if (this.chessBoard.hasChess(row, column) || this.isOver)
 			this.mainView.onChessPutFailed(this.currentPlayer, row, column);
 		else {
 			this.chessBoard.setChessOnBoard(this.currentPlayer.getChessName(), row, column);
 			this.mainView.onChessPutSuccessfully(this.currentPlayer, row, column);
+			if (!this.chessBoard.hasLine())
+				this.turnNextPlayer();
+			else {
+				this.isOver = true;
+				this.mainView.onGameOver(this.currentPlayer);
+			}
 		}
-		if (!this.chessBoard.hasLine())
-			this.turnNextPlayer();
-		else
-			this.mainView.onGameOver(this.currentPlayer);
 	};
 	this.turnNextPlayer = function() {
         console.log("turnNextPlayer...");

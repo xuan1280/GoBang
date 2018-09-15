@@ -27,55 +27,64 @@ function Board() {
 		var lastChess = this.chessOrder[this.chessOrder.length-1];
 		row = lastChess.getRow();
 		column = lastChess.getColumn();
+		console.log(row + ", " + column);
 		return this.judgeHorizontal(row, column) || this.judgeVertical(row, column) || this.judgeLeftOblitue(row, column) || this.judgeRightOblitue(row, column);
 	};
 	this.judgeLeftOblitue = function(row, column) {
-		var count = 0
-		for (i = row-2, j = column-2; i < 2, j < 2; i++, j++) {
+		var count = 0;
+		for (i = row-4, j = column-4; i <= row+4, j <= column+4; i++, j++) {
 			if (i < 1 || j < 1 || i > this.row || j > this.column)
 				continue;
 			if (this.intersections[i][j].getChessName() == this.intersections[row][column].getChessName())
-				count++;
+				count+=1;
 			else
 				count = 0;
-		}	
-		return count == 5;
+			if (count == 5)
+				return true;
+		}
+		return false;
 	};
 	this.judgeRightOblitue = function(row, column) {
-		var count = 0
-		for (i = row-2, j = column+2; i < 2, j >= -2; i++, j--) {
+		var count = 0;
+		for (i = row-4, j = column+4; i <= row+4, j >= column-4; i++, j--) {
 			if (i < 1 || j < 1 || i > this.row || j > this.column)
 				continue;
 			if (this.intersections[i][j].getChessName() == this.intersections[row][column].getChessName())
-				count++;
+				count+=1;
 			else
 				count = 0;
+			if (count == 5)
+				return true;
 		}
-		return count == 5;
+		return false;
 	};
 	this.judgeHorizontal = function(row, column) {
-		var count = 0
-		for (i = column-2; i < 2; i++) {
+		var count = 0;
+		for (i = column-4; i <= column+4; i++) {
 			if (i < 1 || i > this.column)
 				continue;
 			if (this.intersections[row][i].getChessName() == this.intersections[row][column].getChessName())
-				count++;
+				count+=1;
 			else
 				count = 0;
+			if (count == 5)
+				return true;
 		}
-		return count == 5;
+		return false;
 	};
 	this.judgeVertical = function(row, column) {
-		var count = 0
-		for (i = row-2; i < 2; i++) {
+		var count = 0;
+		for (i = row-4; i <= row+4; i++) {
 			if (i < 1 || i > this.row)
 				continue;
 			if (this.intersections[i][column].getChessName() == this.intersections[row][column].getChessName())
-				count++;
+				count+=1;
 			else
-				count = 0;	
+				count = 0;
+			if (count == 5)
+				return true;
 		}
-		return count == 5;
+		return false;
 	};
 	this.goBackAndGetChessOrder = function() {
 		var lastIntersection = chessOrder.pop();
