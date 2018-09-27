@@ -10,8 +10,6 @@ function MainView(goBang) {
 	var canvas = document.getElementById("checkerboard");
     this.goBang = goBang;
     var painter = new Painter(canvas);
-    var waitting;
-    var chessColor = false;
     var getMousePos = function(e){
 		var rect = canvas.getBoundingClientRect();
 		return {
@@ -38,14 +36,23 @@ function MainView(goBang) {
     });
     this.onSetPlayer1Name = function() {
         console.log("set plalyer1 name");
-        this.goBang.setPlayer1Name("A");
+        var name;
+        do {
+            name = prompt("Please enter plalyer 1 name", "");
+        } while(name == null || name == "");
+        this.goBang.setPlayer1Name(name);
     };
     this.onSetPlayer2Name = function() {
         console.log("set plalyer2 name");
-        this.goBang.setPlayer2Name("B");
+        var name;
+        do {
+            name = prompt("Please enter plalyer 2 name", "");
+        } while(name == null || name == "");
+        this.goBang.setPlayer2Name(name);
     };
     this.onGameStarted = function() {
         console.log("game start");
+        window.alert("Game start");
     };
     this.onPlayerTurn = function(player) {
         console.log("turn %s", player.getName());
@@ -63,6 +70,7 @@ function MainView(goBang) {
     };
     this.onGameOver = function(player) {
         console.log("game over, winner is " + player.getName());
+        alert("Game over!! The winner is " + player.getName());
     };
     this.paintBoard = function() {
         painter.drawCheckerBoard();

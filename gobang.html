@@ -17,8 +17,8 @@
 					<p>輪到:</p><br/>
 					<p id="playerName">白方<img id="chess" src="pic/white.png"></p>
 				</div>
-				<button id="new" type="button">開始新局</button>
-				<button id="back" type="button">毀棋</button>
+				<button id="new" type="button" onclick="newGame()">開始新局</button>
+				<button id="back" type="button" onclick="goBang.remove()">毀棋</button>
 			</div>
 			
 			<canvas id="checkerboard" width="450" height="450"></canvas>
