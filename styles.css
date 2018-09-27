@@ -1,46 +1,55 @@
+html, body {
+	height: 100%;
+}
+
 body {
     margin: 0px;
+	font-family: "Microsoft JhengHei"
 }
 
-html, body {
-    height: 100%;
-}
-
-h2 {
-	background-color: #D0892A;
+#title {
+	background-color: #CDA67A;
 	height: 50px;
+	line-height: 50px; /*TODO 換成10%*/   
 	width: 100%; 
 	margin: 0px;
 	text-align: center;
-	line-height: 50px;
-	font-family: "verdana";
 }
 
 .content {
-	background-color: #672D18;
+	background-color: #6B543C;
+	border: 1px black solid;
 	height: 85%;
 	width: 100%;
+	margin: 0;
 }
 
-.left {
+#left {
 	float: left;
 	height: 100%;
-	width: 30%;
 }
 
-.right {
+#right {
 	float: right;
 	height: 100%;
-	width: 20%;
 }
 
-#checkerboard {
-	height: 450px;
-	width: 450px; 
+#historyBoard {
+	margin-left: 10%;
+	height: 100%;
+	width: 90%;
+	max-width: 90%;
+	background-color: white;
+	overflow-y: scroll;
+}
+
+.historyMessage{
+	margin: 2px;
 }
 
 footer {
-	background-color: yellow;
+	border: 1px orange solid; /*TODO 理解為什麼加個邊就能解決留白問題*/
+	background-color: #FFF3CE;
 	height: 10%; 
 	width: 100%;
 	margin: 0px;
@@ -52,8 +61,10 @@ footer {
 	margin-left: 20px;
 }
 
-canvas {
-    background-color: orange; 
+#checkerboard {
+	height: 450px;
+	width: 450px; 
+	background-color: orange; 
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -61,3 +72,35 @@ canvas {
     padding-right: 0;
     margin: -225px 0 0 -225px;
 }
+
+#leftTop {
+	text-align: left;
+	padding-left: 15px;
+	font-style: bold;
+	color: #ffffff;
+	height: 40%;
+}
+
+#leftBottom {
+	height: 60%;
+}
+
+.whiteCornerBtn{
+	font-family: "Microsoft JhengHei";
+	font-size: 35px;
+	background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+	display: block;
+	height: 80px;
+	line-height: 80px;
+	width: 70%; 
+	margin: 0 auto;
+	margin-top: 30px;
+    box-shadow: 1px 1px #1E1C1C;
+}
+
+.whiteCornerBtn:hover{
+    box-shadow: 2px 4px #1E1C1C;
+}
+

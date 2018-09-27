@@ -9,15 +9,18 @@ function GoBang() {
     this.setPlayer1Name = function(name) {
         console.log("setPlayer1Name..." + name);
         this.players[0] = new Player(name, ChessName.BLACK);
-    };
+	};
+	
     this.setPlayer2Name = function(name) {
         console.log("setPlayer2Name..." + name);
 		this.players[1] = new Player(name, ChessName.WHITE);
 	};
+
 	this.setMainView = function(mainView) {
     	console.log("setMainView...");
 		this.mainView = mainView;
 	};
+	
 	this.init = function() {
 		this.chessBoard.initBoard(15, 15);
 		this.mainView.paintBoard();

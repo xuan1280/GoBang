@@ -5,34 +5,42 @@
 		<meta name="description" content="Gobang">
 		<meta name="keywords" content="Gobang, Renju, 五子棋">
 		<meta name="author" content="Joanna">
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles.css"/>
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
 	</head>
 	
-	<body id="body">
-		<h2>五子棋遊戲</h2>
+	<body id="body" onresize="">
+		<h2 id="title">五子棋遊戲</h2>
 		
 		<div class="content">
-			<div class="left">
-				<div >
-					<p>輪到:</p><br/>
-					<p id="playerName">白方<img id="chess" src="pic/white.png"></p>
+			<div id="left">
+				<div id="leftTop">
+					<p>輪到:</p>
+					<span id="playerName"></span>
+					<img id="chess"/>
 				</div>
-				<button id="new" type="button" onclick="newGame()">開始新局</button>
-				<button id="back" type="button" onclick="goBang.remove()">毀棋</button>
+				<div id="leftBottom">
+					<button class="whiteCornerBtn" id="newGameBtn" type="button">開始新局</button>
+					<button  class="whiteCornerBtn" id="regretBtn" type="button">毀棋</button>
+				</div>
 			</div>
 			
+			<!-- 如果沒有把width,height寫在html中，則預設會以30,30作為基準放大，造成棋盤尺寸失測-->
 			<canvas id="checkerboard" width="450" height="450"></canvas>
 			
-		
-			<div class="right">
-				<p id="site">right</p><br/>
-				<p id="mousedownsite">right</p>
+			<div id="right">
+				<div id="historyBoard">
+				</div>
 			</div>
 		</div>
 		<footer>
 			<p>關於作者</p>
 		</footer>
 	</body>
+	<script type='text/javascript' src="js/MainView.js"></script>
 	<script type='text/javascript' src="js/Painter.js"></script>
 	<script type='text/javascript' src="js/Board.js"></script>
 	<script type='text/javascript' src="js/ChessName.js"></script>
