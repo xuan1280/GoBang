@@ -3,7 +3,7 @@
  * https://github.com/airingursb/AiringGo
  */
 
-function AiringGo(gobang) {
+function AI(gobang) {
     this.name = "AiringGo";
     this.gobang = gobang;
     this.chessBoard = gobang.chessBoard;
@@ -12,6 +12,9 @@ function AiringGo(gobang) {
     this.myWin = [];
     this.airingWin = [];
 }
+
+AI.prototype = Object.create(GoBangListener.prototype);
+AI.prototype.constructor = AI;
 
 AI.prototype.init = function () {
     // 初始化赢法统计数组
@@ -68,15 +71,8 @@ AI.prototype.init = function () {
     }
 };
 
-AI.prototype.onSetPlayer1Name = function () {
-    this.gobang.setPlayer1Name(this.name);
-};
-
-AI.prototype.onSetPlayer2Name = function () {
-    this.gobang.setPlayer2Name(this.name);
-};
-
-AI.prototype.onGameStarted = function () {
+AI.prototype.onSetPlayerName = function (playerNo) {
+    this.gobang.setPlayerName(playerNo, this.name);
 };
 
 AI.prototype.onPlayerTurn = function (player) {
@@ -181,11 +177,3 @@ AI.prototype.onChessPutSuccessfully = function (player, row, column) {
     }
 };
 
-AI.prototype.onNextPlayer = function (player) {
-};
-
-AI.prototype.onGameOver = function (player) {
-};
-
-AI.prototype.onChessRemoveSuccessfully = function (intersections) {
-};
