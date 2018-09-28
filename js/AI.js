@@ -95,16 +95,16 @@ AI.prototype.onPlayerTurn = function (player) {
 AI.prototype.executeMinMaxAlgorithm = function(){
     var u = 0;              // 电脑预落子的y位置
     var v = 0;              // 电脑预落子的x位置
-    var myScore = [];       // 玩家的分数
+    var playerScore = [];       // 玩家的分数
     var airingScore = [];   // 电脑的分数
     var max = 0;            // 最优位置的分数
 
     // 初始化分数的二维数组
     for (var i = 0; i < 15; i++) {
-        myScore[i] = [];
+        playerScore[i] = [];
         airingScore[i] = [];
         for (var j = 0; j < 15; j++) {
-            myScore[i][j] = 0;
+            playerScore[i][j] = 0;
             airingScore[i][j] = 0;
         }
     }
@@ -116,13 +116,13 @@ AI.prototype.executeMinMaxAlgorithm = function(){
                 for (var k = 0; k < this.count; k++) {
                     if (this.wins[i][j][k]) {
                         if (this.myWin[k] == 1) {
-                            myScore[i][j] += 200;
+                            playerScore[i][j] += 200;
                         } else if (this.myWin[k] == 2) {
-                            myScore[i][j] += 400;
+                            playerScore[i][j] += 400;
                         } else if (this.myWin[k] == 3) {
-                            myScore[i][j] += 2000;
+                            playerScore[i][j] += 2000;
                         } else if (this.myWin[k] == 4) {
-                            myScore[i][j] += 10000;
+                            playerScore[i][j] += 10000;
                         }
                         if (this.airingWin[k] == 1) {
                             airingScore[i][j] += 220;
@@ -137,11 +137,11 @@ AI.prototype.executeMinMaxAlgorithm = function(){
                 }
                 
                 // 如果玩家(i,j)处比目前最优的分数大，则落子在(i,j)处
-                if (myScore[i][j] > max) {
-                    max = myScore[i][j];
+                if (playerScore[i][j] > max) {
+                    max = playerScore[i][j];
                     u = i;
                     v = j;
-                } else if (myScore[i][j] == max) {
+                } else if (playerScore[i][j] == max) {
                     // 如果玩家(i,j)处和目前最优分数一样大，则比较电脑在该位置和预落子的位置的分数
                     if (airingScore[i][j] > airingScore[u][v]) {
                         u = i;
@@ -156,7 +156,7 @@ AI.prototype.executeMinMaxAlgorithm = function(){
                     v = j;
                 } else if (airingScore[i][j] == max) {
                     // 如果电脑(i,j)处和目前最优分数一样大，则比较玩家在该位置和预落子的位置的分数
-                    if (myScore[i][j] > myScore[u][v]) {
+                    if (playerScore[i][j] > playerScore[u][v]) {
                         u = i;
                         v = j;
                     }
@@ -170,8 +170,11 @@ AI.prototype.executeMinMaxAlgorithm = function(){
 
 AI.prototype.onChessPutFailed = function (player, row, column) { };
 
-AI.prototype.onChessPutSuccessfully = function (player, row, column) { 
-    console.log("%s put successfully, count: %d", player.getName(), this.count);
+AI.prototype.onChessPutSuccessfully = function (player, row, column) {
+    this.updateWinStates(player, row, column);
+};
+
+AI.prototype.updateWinStates = function(player, row, column){
     for (var k = 0; k < this.count; k++) {
         if (this.wins[row-1][column-1][k]) {
             if (player.chessName === this.chessName)
@@ -186,5 +189,5 @@ AI.prototype.onChessPutSuccessfully = function (player, row, column) {
             }
         }
     }
-};
+}
 
