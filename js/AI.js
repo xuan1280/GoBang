@@ -1,6 +1,8 @@
 /**
  * @author Airing
  * https://github.com/airingursb/AiringGo
+ * 此演算法之解說
+ * https://www.jianshu.com/p/83fa8cc31a38
  */
 
 function AI(gobang) {
