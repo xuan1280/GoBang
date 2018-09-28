@@ -13,7 +13,8 @@ MainView.prototype.initView = function(){
 	this.canvas = document.getElementById("checkerboard");
     this.painter = new Painter(this.canvas);
     this.historyBoard = document.getElementById("historyBoard");
-    this.newGameBtn = document.getElementById("newGameBtn");
+    this.newGameP2pBtn = document.getElementById("newGameP2pBtn");
+    this.newGameAiBtn = document.getElementById("newGameAiBtn");
     this.regretBtn = document.getElementById("regretBtn");
     this.adjustContainerToReduceVacancy();
     this.addCanvasListeners();
@@ -59,10 +60,12 @@ MainView.prototype.addCanvasListeners = function(){
 /* TODO 開始新遊戲 與悔棋 */
 MainView.prototype.addButtonListeners = function(){
     var mainView = this;
-    this.newGameBtn.addEventListener('click', function(e) {
+    this.newGameP2pBtn.addEventListener('click', function(e) {
         mainView.repaint();
         mainView.goBang.init();
         mainView.goBang.startGame();
+    });
+    this.newGameAiBtn.addEventListener('click', function(e) {
     });
     this.regretBtn.addEventListener("click", function(e) {
         mainView.goBang.regretLastStep();

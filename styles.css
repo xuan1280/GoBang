@@ -45,6 +45,7 @@ body {
 
 .historyMessage{
 	margin: 2px;
+	font-size: 15px; 
 }
 
 footer {
@@ -75,24 +76,24 @@ footer {
 
 #leftTop {
 	text-align: left;
-	padding-left: 15px;
+	padding-left: 22px;
 	font-style: bold;
 	color: #ffffff;
-	height: 40%;
+	height: 30%;
 }
 
 #leftBottom {
-	height: 60%;
+	height: 70%;
 }
 
 .whiteCornerBtn{
 	font-family: "Microsoft JhengHei";
-	font-size: 35px;
+	font-size: 28px;
 	background-color: white;
     border: 2px solid black;
     border-radius: 25px;
 	display: block;
-	height: 80px;
+	height: 70px;
 	line-height: 80px;
 	width: 70%; 
 	margin: 0 auto;
