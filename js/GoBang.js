@@ -1,12 +1,10 @@
 function GoBang() {
-	this.listeners = [];
+	this.listeners;
+	this.players;
 	this.currentPlayer;
-	this.currentPlayerIndex = 0;
-	this.playerAmount = 2;
+	this.currentPlayerIndex;
 	this.chessBoard = new Board();
-	this.players = [];
-	this.isOver = false;
-	this.isAiGame = false;
+	this.isOver = true;
 }
 
 GoBang.prototype.addListener = function (listener) {
@@ -18,30 +16,37 @@ GoBang.prototype.broadcast = function (lambda) {
 };
 
 GoBang.prototype.initGame = function () {
+	this.listeners = [];
+	this.players = [];
+	this.currentPlayer = undefined;
+	this.currentPlayerIndex = 0;
+	this.chessBoard = new Board();
 	this.chessBoard.initBoard(15, 15);
 	this.broadcast(l => l.onGameInit());
 };
 
 GoBang.prototype.startGame = function () {
-	if (this.listeners.length < 2) 
+	if (this.listeners.length < 2)
 		throw "Listener 數量少於 2，是否忘記設置?";
 
-	this.broadcast(l => l.onGameStarted());
 	for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
-		this.listeners[playerNo].onSetPlayerName(playerNo, 
-			playerNo == 0 ? ChessName.WHITE : ChessName.BLACK);
-	
+		this.listeners[playerNo].onSetPlayerName(playerNo);
+
+	this.isOver = false;
+	for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
+		this.listeners[playerNo].onGameStarted(this.players[playerNo]);
+
 	this.currentPlayer = this.players[0];
 	this.turnNextPlayer();
 };
 
 GoBang.prototype.setPlayerName = function (playerNo, name) {
 	var chessName = playerNo == 0 ? ChessName.WHITE : ChessName.BLACK;
-	this.players[playerNo] = new Player(name, chessName);
+	this.players[playerNo] = new Player(playerNo, name, chessName);
 };
 
-GoBang.prototype.putDownChess = function (row, column) {
-	if (this.chessBoard.hasChess(row, column) || this.isOver)
+GoBang.prototype.putDownChess = function (player, row, column) {
+	if (this.chessBoard.hasChess(row, column) || player !== this.currentPlayer || this.isOver)
 		this.broadcast(l => l.onChessPutFailed(this.currentPlayer, row, column));
 	else {
 		this.chessBoard.setChessOnBoard(this.currentPlayer.getChessName(), row, column);
@@ -63,6 +68,5 @@ GoBang.prototype.turnNextPlayer = function () {
 
 GoBang.prototype.regretLastStep = function () {
 	var chessOrder = this.chessBoard.goBackAndGetChessOrder();
-	/*TODO*/
-	this.mainView.repaint(chessOrder);
+	this.broadcast(l => l.onChessRemoveSuccessfully(chessOrder));
 };

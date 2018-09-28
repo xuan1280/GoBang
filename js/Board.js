@@ -92,9 +92,9 @@ function Board() {
 		return false;
 	};
 	this.goBackAndGetChessOrder = function() {
-		var lastIntersection = chessOrder.pop();
+		var lastIntersection = this.chessOrder.pop();
 		this.intersections[lastIntersection.getRow()][lastIntersection.getColumn()].setChessName(ChessName.EMPTY);
-		return chessOrder;
+		return this.chessOrder;
 	};
 }
 

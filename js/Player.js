@@ -1,4 +1,5 @@
-function Player(name, chessName) {
+function Player(playerNo, name, chessName) {
+	this.playerNo = playerNo;
 	this.name = name;	
 	this.chessName = chessName;
 	this.setName = function(name){

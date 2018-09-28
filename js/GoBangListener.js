@@ -2,13 +2,10 @@
 function GoBangListener() {
 }
 
-GoBangListener.prototype.onSetPlayerName = function (playerNo, chessName) {
+GoBangListener.prototype.onSetPlayerName = function (playerNo) {
 };
 
-GoBangListener.prototype.onGameInit = function() {
-};
-
-GoBangListener.prototype.onGameStarted = function () {
+GoBangListener.prototype.onGameStarted = function (player) {
 };
 
 GoBangListener.prototype.onPlayerTurn = function (player) {

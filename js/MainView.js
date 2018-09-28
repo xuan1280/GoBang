@@ -7,8 +7,6 @@ document.body.onload = function() {
 function MainView(gobang) {
     this.goBang = gobang;
     this.initView();
-    this.goBang.addListener(this);
-    this.goBang.initGame();
 }
 
 MainView.prototype = Object.create(GoBangListener.prototype);
@@ -22,9 +20,11 @@ MainView.prototype.initView = function(){
     this.newGameP2pBtn = document.getElementById("newGameP2pBtn");
     this.newGameAiBtn = document.getElementById("newGameAiBtn");
     this.regretBtn = document.getElementById("regretBtn");
+    this.regretBtn.disabled = true;
     this.adjustContainerToReduceVacancy();
     this.addCanvasListeners();
     this.addButtonListeners();
+    this.painter.drawCheckerBoard();
 }
 
 MainView.prototype.adjustContainerToReduceVacancy = function(){
@@ -61,7 +61,7 @@ MainView.prototype.addCanvasListeners = function(){
         var pos = mainView.getMousePos(e);
         var x = Math.ceil(pos.x / 30), y = Math.ceil(pos.y / 30);
         var coordinate = "點擊 座標值: (" + y + "," + x + ")";
-        mainView.goBang.putDownChess(y, x);
+        mainView.goBang.putDownChess(mainView.player, y, x);
     });
 };
 
@@ -70,18 +70,21 @@ MainView.prototype.addButtonListeners = function(){
     var goBang = this.goBang;
 
     this.newGameP2pBtn.addEventListener('click', function(e) {
-        //mainView.repaint();
+        mainView.repaintCheckerBoard();
         goBang.initGame();
+        goBang.addListener(mainView);
         goBang.addListener(new Player2Delegatee(mainView));
         goBang.startGame();
+        mainView.regretBtn.disabled = false; 
     });
 
     this.newGameAiBtn.addEventListener('click', function(e) {
-        //mainView.repaint();
+        mainView.repaintCheckerBoard();
         goBang.initGame();
+        goBang.addListener(mainView);
         goBang.addListener(new AI(goBang));
-        console.log(goBang.listeners);
         goBang.startGame();
+        mainView.regretBtn.disabled = true;  //AI模式暫時不支援悔棋
     });
 
     this.regretBtn.addEventListener("click", function(e) {
@@ -89,7 +92,12 @@ MainView.prototype.addButtonListeners = function(){
     });
 };
 
-MainView.prototype.onSetPlayerName = function(playerNo, chessName) {
+MainView.prototype.repaintCheckerBoard = function(){
+    this.painter.clearCanvas();
+    this.painter.drawCheckerBoard();
+};
+
+MainView.prototype.onSetPlayerName = function(playerNo) {
     console.log("Set plalyer" + playerNo + "'s name.");
     var name;
     do {
@@ -98,14 +106,11 @@ MainView.prototype.onSetPlayerName = function(playerNo, chessName) {
     this.goBang.setPlayerName(playerNo, name);
 };
 
-MainView.prototype.onGameInit = function() {
-    this.painter.drawCheckerBoard();
-};
-
-MainView.prototype.onGameStarted = function() {
+MainView.prototype.onGameStarted = function(player) {
 };
 
 MainView.prototype.onPlayerTurn = function(player) {
+    this.player = player;
     console.log("turn %s", player.getName());
     var chess = document.getElementById("chess")
     document.getElementById("playerName").innerText = player.getName();
@@ -113,7 +118,7 @@ MainView.prototype.onPlayerTurn = function(player) {
 };
 
 MainView.prototype.onChessPutFailed = function(player, row, column) {
-    console.log(player.getName() + " put failed, (" + row + ", " + column + ") has chess");
+    console.log(player.getName() + " put failed, (" + row + ", " + column + ")");
 };
 
 MainView.prototype.onChessPutSuccessfully = function(player, row, column) {
@@ -138,8 +143,7 @@ MainView.prototype.onGameOver = function(player) {
 };
 
 MainView.prototype.onChessRemoveSuccessfully = function(intersections) {
-    this.painter.clearCanvas();
-    this.painter.drawCheckerBoard();
+    this.repaintCheckerBoard();
     for (i = 0; i < intersections.length; i++) {
         var chessName = intersections[i].getChessName();
         painter.drawCircle(chessName.color, intersections[i].getRow(), intersections[i].getColumn());

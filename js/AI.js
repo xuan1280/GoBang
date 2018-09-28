@@ -7,7 +7,7 @@
 
 function AI(gobang) {
     this.name = "AiringGo";
-    this.chessName = undefined;
+    this.player = undefined;
     this.gobang = gobang;
     this.chessBoard = gobang.chessBoard;
     this.wins = []; // 赢法统计数组  3-d boolean array 
@@ -77,20 +77,23 @@ AI.prototype.init = function () {
     }
 };
 
-AI.prototype.onSetPlayerName = function (playerNo, chessName) {
-    this.chessName = chessName;
+AI.prototype.onSetPlayerName = function (playerNo) {
     this.gobang.setPlayerName(playerNo, this.name);
+};
+
+AI.prototype.onGameStarted = function(player){
+    this.player = player;
 };
 
 AI.prototype.onPlayerTurn = function (player) {
     if (this.firstTurn) 
     {
         this.firstTurn = false;
-        this.gobang.putDownChess(8, 8);
+        this.gobang.putDownChess(this.player, 8, 8);
     }
-    else if (player.chessName === this.chessName) {
+    else if (player === this.player) {
         var selection = this.executeMinMaxAlgorithm();
-        this.gobang.putDownChess(selection.y+1, selection.x+1);
+        this.gobang.putDownChess(this.player, selection.y+1, selection.x+1);
     }
 };
 
@@ -173,20 +176,26 @@ AI.prototype.executeMinMaxAlgorithm = function(){
 AI.prototype.onChessPutFailed = function (player, row, column) { };
 
 AI.prototype.onChessPutSuccessfully = function (player, row, column) {
-    this.updateWinStates(player, row, column);
+    this.updateWinStates(player, row, column, false);
 };
 
-AI.prototype.updateWinStates = function(player, row, column){
+AI.prototype.onChessRemoveSuccessfully =  function (player, row, column) {
+    this.updateWinStates(player, row, column, true);
+
+};
+/* TODO 悔棋 不相容 AI演算法 */
+AI.prototype.updateWinStates = function(player, row, column, regretful){
+    var adjust = regretful ? -1 : 1;
     for (var k = 0; k < this.count; k++) {
         if (this.wins[row-1][column-1][k]) {
-            if (player.chessName === this.chessName)
+            if (player === this.player)
             {
-                this.airingWin[k] ++;
-                this.myWin[k] = 6;
+                this.airingWin[k] += adjust;
+                this.myWin[k] = 6;  //設值6代表此贏法不可能實現
             }
             else
             {
-                this.myWin[k] ++;
+                this.myWin[k] += adjust;
                 this.airingWin[k] = 6;
             }
         }
