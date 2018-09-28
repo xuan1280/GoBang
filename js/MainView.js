@@ -117,9 +117,6 @@ function MainView() {
         newMessageElm.className = "historyMessage";
         newMessageElm.style.display = "block";
         return newMessageElm;
-    }
-    this.onNextPlayer = function(player) {
-        console.log("turn to " + player.getName());
     };
     this.onGameOver = function(player) {
         console.log("game over, winner is " + player.getName());

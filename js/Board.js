@@ -13,7 +13,9 @@ function Board() {
 			for (j = 1; j <= column; j++) 
 				this.intersections[i][j] = new Intersection(ChessName.EMPTY, i, j);
 	};
-	
+	this.getChessNameAt = function(y, x){
+		return this.intersections[y][x].getChessName();
+	};
 	this.hasChess = function(row, column) {
 		return !this.intersections[row][column].isEmpty();
 	};

@@ -25,7 +25,7 @@ function Painter(canvas) {
 			context.lineTo(startX + spacing * dx, startY + (j * dy));
 			context.stroke();
 		}
-	}
+	};
 	this.drawCircle = function(chessColor, row, column) {
 		context.fillStyle = chessColor;
 		context.beginPath();
