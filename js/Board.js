@@ -3,18 +3,21 @@ function Board() {
 	this.column;
 	this.chessOrder = [];
 	this.intersections;
+
 	this.initBoard = function(row, column) {
 		this.row = row;
 		this.column = column;
 		this.intersections = new Array(row+1);
 		for (i = 1; i <= row; i++)
+		{
 			this.intersections[i] = new Array(column+1);
-		for (i = 1; i <= row; i++) 
 			for (j = 1; j <= column; j++) 
 				this.intersections[i][j] = new Intersection(ChessName.EMPTY, i, j);
+		}
 	};
-	this.getChessNameAt = function(y, x){
-		return this.intersections[y][x].getChessName();
+
+	this.getChessNameAt = function(row, column){
+		return this.intersections[row][column].getChessName();
 	};
 	this.hasChess = function(row, column) {
 		return !this.intersections[row][column].isEmpty();

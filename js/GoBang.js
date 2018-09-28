@@ -28,7 +28,8 @@ GoBang.prototype.startGame = function () {
 
 	this.broadcast(l => l.onGameStarted());
 	for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
-		this.listeners[playerNo].onSetPlayerName(playerNo);
+		this.listeners[playerNo].onSetPlayerName(playerNo, 
+			playerNo == 0 ? ChessName.WHITE : ChessName.BLACK);
 	
 	this.currentPlayer = this.players[0];
 	this.turnNextPlayer();
@@ -55,7 +56,8 @@ GoBang.prototype.putDownChess = function (row, column) {
 };
 
 GoBang.prototype.turnNextPlayer = function () {
-	this.currentPlayer = this.players[++this.currentPlayerIndex % this.playerAmount];
+	this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+	this.currentPlayer = this.players[this.currentPlayerIndex];
 	this.broadcast(l => l.onPlayerTurn(this.currentPlayer));
 };
 

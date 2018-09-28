@@ -79,7 +79,8 @@ MainView.prototype.addButtonListeners = function(){
     this.newGameAiBtn.addEventListener('click', function(e) {
         //mainView.repaint();
         goBang.initGame();
-        goBang.addListener(new AI());
+        goBang.addListener(new AI(goBang));
+        console.log(goBang.listeners);
         goBang.startGame();
     });
 
@@ -88,7 +89,7 @@ MainView.prototype.addButtonListeners = function(){
     });
 };
 
-MainView.prototype.onSetPlayerName = function(playerNo) {
+MainView.prototype.onSetPlayerName = function(playerNo, chessName) {
     console.log("Set plalyer" + playerNo + "'s name.");
     var name;
     do {

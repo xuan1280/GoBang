@@ -5,12 +5,16 @@
 
 function AI(gobang) {
     this.name = "AiringGo";
+    this.chessName = undefined;
     this.gobang = gobang;
     this.chessBoard = gobang.chessBoard;
     this.wins = []; // 赢法统计数组  3-d boolean array 
     this.count = 0; // 赢法统计数组的计数器
     this.myWin = [];
     this.airingWin = [];
+    this.firstTurn = true;
+
+    this.init();
 }
 
 AI.prototype = Object.create(GoBangListener.prototype);
@@ -25,7 +29,7 @@ AI.prototype.init = function () {
         }
     }
 
-    // 阳线纵向90°的赢法
+    // 横向90°的赢法
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 11; j++) {
             for (var k = 0; k < 5; k++) {
@@ -35,7 +39,7 @@ AI.prototype.init = function () {
         }
     }
 
-    // 阳线横向0°的赢法
+    // 縱向0°的赢法
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 11; j++) {
             for (var k = 0; k < 5; k++) {
@@ -71,20 +75,26 @@ AI.prototype.init = function () {
     }
 };
 
-AI.prototype.onSetPlayerName = function (playerNo) {
+AI.prototype.onSetPlayerName = function (playerNo, chessName) {
+    this.chessName = chessName;
     this.gobang.setPlayerName(playerNo, this.name);
 };
 
 AI.prototype.onPlayerTurn = function (player) {
-    if (player === this) {
+    if (this.firstTurn) 
+    {
+        this.firstTurn = false;
+        this.gobang.putDownChess(8, 8);
+    }
+    else if (player.chessName === this.chessName) {
         var selection = this.executeMinMaxAlgorithm();
-        this.gobang.putDownChess(selection.y, selection.x);
+        this.gobang.putDownChess(selection.y+1, selection.x+1);
     }
 };
 
 AI.prototype.executeMinMaxAlgorithm = function(){
-    var u = 0;              // 电脑预落子的x位置
-    var v = 0;              // 电脑预落子的y位置
+    var u = 0;              // 电脑预落子的y位置
+    var v = 0;              // 电脑预落子的x位置
     var myScore = [];       // 玩家的分数
     var airingScore = [];   // 电脑的分数
     var max = 0;            // 最优位置的分数
@@ -102,7 +112,7 @@ AI.prototype.executeMinMaxAlgorithm = function(){
     // 通过赢法统计数组为两个二维数组分别计分
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
-            if (this.chessBoard.getChessNameAt(i, j) == ChessName.EMPTY) {
+            if (this.chessBoard.getChessNameAt(i+1, j+1) === ChessName.EMPTY) {
                 for (var k = 0; k < this.count; k++) {
                     if (this.wins[i][j][k]) {
                         if (this.myWin[k] == 1) {
@@ -155,15 +165,16 @@ AI.prototype.executeMinMaxAlgorithm = function(){
         }
     }
 
-    return {x: u, y: v};
+    return {y: u, x: v};
 };
 
 AI.prototype.onChessPutFailed = function (player, row, column) { };
 
 AI.prototype.onChessPutSuccessfully = function (player, row, column) { 
+    console.log("%s put successfully, count: %d", player.getName(), this.count);
     for (var k = 0; k < this.count; k++) {
-        if (this.wins[row][column][k]) {
-            if (player === this)
+        if (this.wins[row-1][column-1][k]) {
+            if (player.chessName === this.chessName)
             {
                 this.airingWin[k] ++;
                 this.myWin[k] = 6;
