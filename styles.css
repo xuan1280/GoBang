@@ -65,6 +65,7 @@ footer {
 #checkerboard {
 	height: 450px;
 	width: 450px; 
+    box-shadow: 6px 15px #1E1C1C;
 	background-color: orange; 
 	position: absolute;
 	top: 50%;
