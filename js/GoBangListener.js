@@ -1,23 +1,16 @@
 
-function GoBangListener() {
-}
+function GoBangListener() { }
 
-GoBangListener.prototype.onSetPlayerName = function (playerNo) {
-};
+GoBangListener.prototype.onSetPlayerName = function (playerNo) { };
 
-GoBangListener.prototype.onGameStarted = function (player) {
-};
+GoBangListener.prototype.onGameStarted = function (player) { };
 
-GoBangListener.prototype.onPlayerTurn = function (player) {
-};
+GoBangListener.prototype.onPlayerTurn = function (player) { };
 
 GoBangListener.prototype.onChessPutFailed = function (player, row, column) { };
 
-GoBangListener.prototype.onChessPutSuccessfully = function (player, row, column) { 
-};
+GoBangListener.prototype.onChessPutSuccessfully = function (player, row, column) { };
 
-GoBangListener.prototype.onGameOver = function (player) {
-};
+GoBangListener.prototype.onGameOver = function (player) { };
 
-GoBangListener.prototype.onChessRemoveSuccessfully = function (intersections) {
-};
+GoBangListener.prototype.onChessRemoveSuccessfully = function (intersections) { };
