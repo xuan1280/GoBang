@@ -123,6 +123,8 @@ MainView.prototype.onChessPutFailed = function(player, row, column) {
 
 MainView.prototype.onChessPutSuccessfully = function(player, row, column) {
     var content = player.getName() + " 選擇了 (" + row + ", " + column + ")";
+    var audio = new Audio('put_chess.mp3');
+    audio.play();
     this.painter.drawCircle(player.getChessName().color, row, column);
     this.historyBoard.appendChild(this.createMessageElement(content));
     this.historyBoard.scrollTop = historyBoard.scrollHeight;
