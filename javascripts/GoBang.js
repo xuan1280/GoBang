@@ -59,6 +59,7 @@ GoBang.prototype.putDownChess = function (player, row, column) {
 			this.turnNextPlayer();
 		else {
 			this.isOver = true;
+			this.saveRecord();
 			this.broadcast(l => l.onGameOver(this.currentPlayer));
 		}
 	}
@@ -81,4 +82,9 @@ GoBang.prototype.setGameMode = function (mode) {
 
 GoBang.prototype.getGameMode = function () {
 	return this.mode;
+}
+
+GoBang.prototype.saveRecord = function () {
+	var chessOrder = this.chessBoard.getChessOrder();
+	console.log(JSON.stringify(chessOrder));
 }

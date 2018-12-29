@@ -96,6 +96,9 @@ function Board() {
 		this.intersections[lastIntersection.getRow()][lastIntersection.getColumn()].setChessName(ChessName.EMPTY);
 		return this.chessOrder;
 	};
+	this.getChessOrder = function() {
+		return this.chessOrder;
+	};
 }
 
 Board.prototype.toString = function() {

@@ -9,18 +9,24 @@ body {
 }
 
 #title {
-	background-color: #CDA67A;
-	height: 50px;
-	line-height: 50px; /*TODO 換成10%*/   
+	position: relative;
+	background-color: #CDA67A; 
 	width: 100%; 
-	margin: 0;
+	height: 8%;
 	text-align: center;
+}
+
+h2 {
+	position: absolute;
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .content {
 	background-color: #6B543C;
-	border: 1px black solid;
-	height: 85%;
+	height: 84%;
 	width: 100%;
 	margin: 0;
 }
@@ -44,15 +50,19 @@ body {
 	overflow-y: scroll;
 }
 
+ /* for Chrome */
+ #historyBoard::-webkit-scrollbar {
+    display: none;
+}
+
 .historyMessage{
 	margin: 2px;
 	font-size: 15px; 
 }
 
 footer {
-	border: 1px orange solid; /*TODO 理解為什麼加個邊就能解決留白問題*/
 	background-color: #FFF3CE;
-	height: 10%; 
+	height: 8%; 
 	width: 100%;
 	margin: 0;
 }
