@@ -7,8 +7,11 @@ function GoBang() {
 	this.isOver = true;
 }
 
-GoBang.prototype.addListener = function (listener) {
+GoBang.prototype.addListener = function (listener, name) {
 	this.listeners.push(listener);
+	console.log(this.listeners.length - 1 + " " + name);
+	
+	this.setPlayerName(this.listeners.length - 1, name);
 };
 
 GoBang.prototype.broadcast = function (lambda) {
@@ -20,6 +23,7 @@ GoBang.prototype.initGame = function () {
 	this.players = [];
 	this.currentPlayer = undefined;
 	this.currentPlayerIndex = 0;
+	this.mode = '';
 	this.chessBoard = new Board();
 	this.chessBoard.initBoard(15, 15);
 	this.broadcast(l => l.onGameInit());
@@ -29,19 +33,19 @@ GoBang.prototype.startGame = function () {
 	if (this.listeners.length < 2)
 		throw "Listener 數量少於 2，是否忘記設置?";
 
-	for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
-		this.listeners[playerNo].onSetPlayerName(playerNo);
+	// for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
+	// 	this.listeners[playerNo].onSetPlayerName(playerNo);
 
 	this.isOver = false;
 	for (playerNo = 0; playerNo < this.listeners.length; playerNo++)
 		this.listeners[playerNo].onGameStarted(this.players[playerNo]);
 
 	this.currentPlayer = this.players[0];
-	this.turnNextPlayer();
+	this.broadcast(l => l.onPlayerTurn(this.currentPlayer));
 };
 
 GoBang.prototype.setPlayerName = function (playerNo, name) {
-	var chessName = playerNo == 0 ? ChessName.WHITE : ChessName.BLACK;
+	var chessName = playerNo == 0 ? ChessName.BLACK : ChessName.WHITE;
 	this.players[playerNo] = new Player(playerNo, name, chessName);
 };
 
@@ -70,3 +74,11 @@ GoBang.prototype.regretLastStep = function () {
 	var chessOrder = this.chessBoard.goBackAndGetChessOrder();
 	this.broadcast(l => l.onChessRemoveSuccessfully(chessOrder));
 };
+
+GoBang.prototype.setGameMode = function (mode) {
+	this.mode = mode;
+}
+
+GoBang.prototype.getGameMode = function () {
+	return this.mode;
+}

@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Board Game Introduction</title>
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="stylesheets/introduction.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
-    <body style="height: 100%; padding: 0;">
+    <body>
         <!--導覽列-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">各式桌遊介紹</a>
@@ -39,10 +39,10 @@
             </div>
         </nav>
 
-        <img src="./pic/gobang.jpg" class="w-100" alt="gobang">
+        <img src="./images/gobang.jpg" class="w-100" alt="gobang">
 
         <!--內容-->
-        <div class="row" style="height:80%; margin: 20px 0 0">
+        <div id="intro-content" class="row">
             <div class="col-2">
                 <div id="list-example" class="list-group">
                     <a class="list-group-item list-group-item-action" href="#list-item-1">簡介</a>
@@ -50,8 +50,8 @@
                     <a class="list-group-item list-group-item-action" href="#list-item-3">規則</a>
                 </div>
             </div>
-            <div class="col-10" style="padding: 0">
-                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height:100%;overflow:auto; position: relative;">
+            <div class="col-10" style="overflow:hidden">
+                <div id="intro-text" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height:100%;overflow:auto; position: relative;">
                     <h4 id="list-item-1">五子棋</h4>
                     <p>五子棋是一種兩人對弈的純策略型棋類遊戲，通常雙方分別使用黑白兩色的棋子，輪流下在棋盤直線與橫線的交叉點上，先在橫線、直線或斜對角線上形成5子連線者獲勝。　　　　
                     </p>

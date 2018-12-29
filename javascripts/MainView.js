@@ -1,8 +1,20 @@
-
 document.body.onload = function() {
     var mainView = new MainView(new GoBang());
     document.body.onresize = mainView.adjustContainerToReduceVacancy;
 };
+
+function modeSelected() {
+    var mode = $('#modeSelect').find(":selected").val();
+    if (mode == 'duel') {
+        $('#inputName').html('玩家1 : <input type="text" name="p1Name" /><br/>玩家2 : <input type="text" name="p2Name" />');
+    }
+    else if (mode == 'ai') {
+        $('#inputName').html('玩家 :  <input type="text" name="p1Name" />');
+    }
+    else {
+        alert('請選擇模式');
+    }
+}
 
 function MainView(gobang) {
     this.goBang = gobang;
@@ -17,8 +29,9 @@ MainView.prototype.initView = function(){
 	this.canvas = document.getElementById("checkerboard");
     this.painter = new Painter(this.canvas);
     this.historyBoard = document.getElementById("historyBoard");
-    this.newGameP2pBtn = document.getElementById("newGameP2pBtn");
-    this.newGameAiBtn = document.getElementById("newGameAiBtn");
+    this.newGameBtn = document.getElementById("newGameBtn");
+    this.confirmBtn = document.getElementById("confirmBtn");
+    this.cancelBtn = document.getElementById("cancelBtn");
     this.regretBtn = document.getElementById("regretBtn");
     this.regretBtn.disabled = true;
     this.adjustContainerToReduceVacancy();
@@ -69,22 +82,32 @@ MainView.prototype.addButtonListeners = function(){
     var mainView = this;
     var goBang = this.goBang;
 
-    this.newGameP2pBtn.addEventListener('click', function(e) {
+    this.newGameBtn.addEventListener('click', function(e) {
+        document.getElementById("modeDialog").showModal();
         mainView.repaintCheckerBoard();
         goBang.initGame();
-        goBang.addListener(mainView);
-        goBang.addListener(new Player2Delegatee(mainView));
-        goBang.startGame();
-        mainView.regretBtn.disabled = false; 
     });
 
-    this.newGameAiBtn.addEventListener('click', function(e) {
-        mainView.repaintCheckerBoard();
-        goBang.initGame();
-        goBang.addListener(mainView);
-        goBang.addListener(new AI(goBang));
+    this.confirmBtn.addEventListener('click', function(e) {
+        mainView.newGameBtn.disabled = true;
+        var mode = $('#modeSelect').find(":selected").val();
+        var formData = $('form').serializeArray();
+        goBang.setGameMode(mode);
+        goBang.addListener(mainView, formData[0]["value"]);
+        
+        if (mode == 'duel') {
+            goBang.addListener(new Player2Delegatee(mainView), formData[1]["value"]);
+            mainView.regretBtn.disabled = false;
+        }
+        else if (mode == 'ai') {
+            goBang.addListener(new AI(goBang), AI.name);
+            mainView.regretBtn.disabled = true;  //AI模式暫時不支援悔棋
+        }
         goBang.startGame();
-        mainView.regretBtn.disabled = true;  //AI模式暫時不支援悔棋
+    });
+
+    this.cancelBtn.addEventListener('click', function (e) {
+        mainView.newGameBtn.disabled = false;
     });
 
     this.regretBtn.addEventListener("click", function(e) {
@@ -97,20 +120,19 @@ MainView.prototype.repaintCheckerBoard = function(){
     this.painter.drawCheckerBoard();
 };
 
-MainView.prototype.onSetPlayerName = function(playerNo) {
-    console.log("Set plalyer" + playerNo + "'s name.");
-    var name;
-    do {
-        name = prompt("Please enter plalyer " + playerNo + " name", "");
-    } while(name == null || name == "");
-    this.goBang.setPlayerName(playerNo, name);
+MainView.prototype.onGameInit = function() {
+    console.log('onGameInit');
 };
 
 MainView.prototype.onGameStarted = function(player) {
+    this.player = player;
 };
 
 MainView.prototype.onPlayerTurn = function(player) {
-    this.player = player;
+    console.log(this.goBang.getGameMode());
+    
+    if (this.goBang.getGameMode() == 'duel')
+        this.player = player;
     console.log("turn %s", player.getName());
     var chess = document.getElementById("chess")
     document.getElementById("playerName").innerText = player.getName();
@@ -123,7 +145,7 @@ MainView.prototype.onChessPutFailed = function(player, row, column) {
 
 MainView.prototype.onChessPutSuccessfully = function(player, row, column) {
     var content = player.getName() + " 選擇了 (" + row + ", " + column + ")";
-    var audio = new Audio('put_chess.mp3');
+    var audio = new Audio('sounds/put_chess.mp3');
     audio.play();
     this.painter.drawCircle(player.getChessName().color, row, column);
     this.historyBoard.appendChild(this.createMessageElement(content));
@@ -142,6 +164,7 @@ MainView.prototype.createMessageElement = function(content){
 MainView.prototype.onGameOver = function(player) {
     console.log("game over, winner is " + player.getName());
     alert("Game over!! The winner is " + player.getName());
+    this.newGameBtn.disabled = false;
 };
 
 MainView.prototype.onChessRemoveSuccessfully = function(intersections) {
