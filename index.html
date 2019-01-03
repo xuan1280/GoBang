@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
     <link rel="stylesheet" href="stylesheets/introduction.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css">
+    </link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.theme.default.min.css">
+    </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/owl.carousel.min.js"></script>
 </head>
 
 <body>
@@ -16,8 +22,8 @@
         <a class="navbar-brand" href="./index.html">
             <img src="./images/TGI.png" width="250">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -29,8 +35,8 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">精選桌遊</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">精選桌遊</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="./introduction_page_gobang.html">五子棋</a>
                         <div class="dropdown-divider"></div>
@@ -43,8 +49,8 @@
                     <a class="nav-link" href="./history.html">桌遊歷史</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">內容分類</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">內容分類</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="./puzzle.html">益智</a>
                         <div class="dropdown-divider"></div>
@@ -105,9 +111,88 @@
     </div>
 
     <!--內容-->
+    <div class="container">
+        <h3 class="h3">熱門</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="hot-slider" class="owl-carousel">
+                    <div class="post-slide11">
+                        <div class="post-img">
+                            <span class="over-layer"></span>
+                            <img src="http://bestjquery.com/tutorial/news-slider/demo16/images/img-1.jpg" alt="">
+                        </div>
+                        <h3 class="post-title">
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur.</a>
+                        </h3>
+                        <span class="post-date"><i class="fa fa-calendar"></i> july 11, 2015</span>
+                    </div>
+
+                    <div class="post-slide11">
+                        <div class="post-img">
+                            <span class="over-layer"></span>
+                            <img src="http://bestjquery.com/tutorial/news-slider/demo16/images/img-2.jpg" alt="">
+                        </div>
+                        <h3 class="post-title">
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur.</a>
+                        </h3>
+                        <span class="post-date"><i class="fa fa-calendar"></i> july 15, 2015</span>
+                    </div>
+
+                    <div class="post-slide11">
+                        <div class="post-img">
+                            <span class="over-layer"></span>
+                            <img src="http://bestjquery.com/tutorial/news-slider/demo16/images/img-3.jpg" alt="">
+                        </div>
+                        <h3 class="post-title">
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur.</a>
+                        </h3>
+                        <span class="post-date"><i class="fa fa-calendar"></i> july 17, 2015</span>
+                    </div>
+
+                    <div class="post-slide11">
+                        <div class="post-img">
+                            <span class="over-layer"></span>
+                            <img src="http://bestjquery.com/tutorial/news-slider/demo16/images/img-4.jpg" alt="">
+                        </div>
+                        <h3 class="post-title">
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur.</a>
+                        </h3>
+                        <span class="post-date"><i class="fa fa-calendar"></i> july 17, 2015</span>
+                    </div>
+
+                    <div class="post-slide11">
+                        <div class="post-img">
+                            <span class="over-layer"></span>
+                            <img src="http://bestjquery.com/tutorial/news-slider/demo16/images/img-5.jpg" alt="">
+                        </div>
+                        <h3 class="post-title">
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur.</a>
+                        </h3>
+                        <span class="post-date"><i class="fa fa-calendar"></i> july 17, 2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#hot-slider").owlCarousel({
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [980, 2],
+                itemsMobile: [600, 1],
+                pagination: true,
+                autoPlay: true
+            });
+        });
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="javascripts/BackTotheTop.js"></script>
 </body>
