@@ -59,7 +59,7 @@ GoBang.prototype.putDownChess = function (player, row, column) {
 			this.turnNextPlayer();
 		else {
 			this.isOver = true;
-			this.saveRecord();
+			this.saveRecord(this.currentPlayer);
 			this.broadcast(l => l.onGameOver(this.currentPlayer));
 		}
 	}
@@ -84,7 +84,24 @@ GoBang.prototype.getGameMode = function () {
 	return this.mode;
 }
 
-GoBang.prototype.saveRecord = function () {
+GoBang.prototype.saveRecord = function (winner) {
 	var chessOrder = this.chessBoard.getChessOrder();
-	console.log(JSON.stringify(chessOrder));
+	var record = {"player": winner, "time": new Date(Date.now()), "record": chessOrder};
+	console.log(JSON.stringify(record));
+	$.put('/putChessOrder', JSON.stringify(record), null, "application/json");
 }
+
+$.put = function(url, data, callback, type){
+	if ( $.isFunction(data) ){
+		type = type || callback,
+		callback = data,
+		data = {}
+	}
+	return $.ajax({
+		url: url,
+		type: 'PUT',
+		contentType: type,
+		success: callback,
+		data: data
+	});
+  }

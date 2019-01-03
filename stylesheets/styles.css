@@ -43,21 +43,39 @@ h2 {
 
 #historyBoard {
 	margin-left: 10%;
-	height: 100%;
+	height: 50%;
 	width: 90%;
 	max-width: 90%;
 	background-color: white;
 	overflow-y: scroll;
 }
 
- /* for Chrome */
- #historyBoard::-webkit-scrollbar {
+/* for Chrome */
+#historyBoard::-webkit-scrollbar {
     display: none;
 }
 
-.historyMessage{
+.historyMessage {
 	margin: 2px;
 	font-size: 15px; 
+}
+
+.winnerHistoryButton {
+	
+}
+
+#winnerHistoryBoard {
+	background-color: rgb(146, 115, 82);
+	margin-left: 10%;
+	height: 50%;
+	width: 90%;
+	max-width: 90%;
+	overflow-y: scroll;
+}
+
+/* for Chrome */
+#winnerHistoryBoard::-webkit-scrollbar {
+    display: none;
 }
 
 footer {
