@@ -51,7 +51,95 @@ body {
     overflow-y: auto;
 }
 
+/*aboutus*/
+#nickname{
+    font-size: 20px;
+    color: gray;
+}
+.desc_wrapper{
+    margin:  20px 10px;
+}
+#self_intro{
+    margin:  0 50px;
+}
+#self_hr{
+    color: coral;
+}
+
  /* for Chrome */
 #intro-text::-webkit-scrollbar {
     display: none;
+}
+
+/*slider*/
+.post-slide11{
+    background: #fff;
+    margin: 0 15px;
+    margin-top: 15px;
+    box-shadow: 0 1px 2px rgba(43,59,93,0.30);
+    margin-bottom:3em;
+}
+.post-slide11 .post-img{
+    position:relative;
+}
+.post-slide11 .over-layer{
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity:0;
+    cursor: pointer;
+    transition: all 0.30s ease 0s;
+}
+.post-slide11:hover .over-layer{
+    opacity:1;
+}
+.post-slide11 .over-layer:after{
+    content: "+";
+    font-size: 52px;
+    color: #fff;
+    position: absolute;
+    top: 31%;
+    left:42%;
+}
+.post-slide11 .post-img img{
+    width: 100%;
+    height: auto;
+}
+.post-slide11 .post-title{
+    margin:25px 0 15px 0;
+    padding:0 15px;
+    padding-bottom: 15px;
+}
+.post-slide11 .post-title:before{
+    content:"";
+    border:2px solid #e67e22;
+    width:18%;
+    display: block;
+    margin-bottom:15px;
+}
+.post-slide11 .post-title a{
+    font-size: 20px;
+    font-weight:bold;
+    color:#333;
+    display: inline-block;
+    text-transform:capitalize;
+    transition: all 0.3s ease 0s;
+}
+.post-slide11 .post-title a:hover{
+    text-decoration: none;
+    color:#e67e22;
+}
+.post-slide11 .post-date{
+    text-transform:capitalize;
+    padding:0 15px;
+    color:#E67E22;
+    font-size:13px;
+}
+.post-slide11 .post-date:before{
+    margin-right: 7px;
+    color:#e67e22;
+}
+.owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span{
+    background: #e67e22;
 }
