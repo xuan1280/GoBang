@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
     <link rel="stylesheet" href="stylesheets/introduction.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -16,8 +17,8 @@
         <a class="navbar-brand" href="./index.html">
             <img src="./images/TGI.png" width="250">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -29,8 +30,8 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">精選桌遊</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">精選桌遊</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="./introduction_page_gobang.html">五子棋</a>
                         <div class="dropdown-divider"></div>
@@ -43,8 +44,8 @@
                     <a class="nav-link" href="./history.html">桌遊歷史</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">內容分類</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">內容分類</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="./puzzle.html">益智</a>
                         <div class="dropdown-divider"></div>
@@ -103,24 +104,65 @@
     </div>
 
     <!--內容-->
-    <h2 style="text-align: center;">我們的團隊</h2>
-    <h4 style="text-align: center;">Our Team</h4>
+    <h2 class="text-center">我們的團隊</h2>
+    <h4 class="text-center">Our Team</h4>
+
     <div class="row" id="self_intro">
-        <img src="images/wolfy.jpg" alt="" width="200" height="200">
-            <div class="column one-second">
-                <div class="desc_wrapper">
-                    <h4>周聖恩</h4>
-                    <h5 id="nickname">小狼</h5>
-                    <hr id="self_hr">
-                    <div class="desc">
-                        <p>
-                            還在找尋人生目標的遊戲廢宅(´・ω・`)
-                        </p>
-                    </div>
+        <div class="col-md-6 col-12 one-second">
+            <img src="images/wolfy.jpg" alt="" style="display:block; margin:auto;height: 200px;">
+            <div class="desc_wrapper">
+                <h4>周聖恩</h4>
+                <h5 id="nickname">小狼</h5>
+                <hr id="self_hr">
+                <div class="desc">
+                    <p>
+                        還在找尋人生目標的遊戲廢宅(´・ω・`)
+                    </p>
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 col-12 one-second">
+            <img src="images/joanna.jpg" alt="" style="display:block; margin:auto;height: 200px;">
+            <div class="desc_wrapper">
+                <h4>張書瑄</h4>
+                <h5 id="nickname">Joanna</h5>
+                <hr id="self_hr">
+                <div class="desc">
+                    <p>
+                        <a href="aboutme.html" style="text-decoration: none">點我看更多</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
+
+    <!-- <div class="py-lg-5 py-3">
+        <h3 class="tittle text-center">聯絡我們</h3>
+        <h4 class="text-center">Contact Us</h4>
+
+        <form action="#" method="post">
+            <div class="row main">
+                <div class="col-md-4 form-left">
+                    <input type="text" class="top-up" name="name" placeholder="Name" required="">
+                </div>
+                <div class="col-md-4 form-left">
+                    <input type="email" name="email" placeholder="Email" required="">
+                </div>
+                <div class="col-md-4 form-right">
+                    <input type="text" name="phone number" placeholder="Phone Number" required="">
+                </div>
+                <div class="col-md-12 form-right">
+                    <textarea placeholder="Write Message Here" required=""></textarea>
+                </div>
+                <div class="book col-12 text-center">
+                    <input type="submit" name="book" value="Submit">
+                </div>
+            </div>
+        </form>
+
+    </div> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
