@@ -60,8 +60,16 @@ h2 {
 	font-size: 15px; 
 }
 
-.winnerHistoryButton {
-	
+.watchWinnerHistoryButton {
+	background-color: rgb(146, 115, 82);
+  	color: black;
+  	border: 2px solid rgb(41, 32, 22); /* Green */
+}
+
+.winnerRecordMessage {
+	width: 100%;
+	padding: 2px;
+  	color: black;
 }
 
 #winnerHistoryBoard {

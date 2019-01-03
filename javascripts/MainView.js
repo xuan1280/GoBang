@@ -118,25 +118,46 @@ MainView.prototype.addButtonListeners = function(){
 };
 
 MainView.prototype.getWinnerHistory = function () {
+    var mainView = this;
     $.get("/getWinnerHistory", function (data) {
         console.log(data);
+        mainView.winnerRecords = data;
         for (var i in data) {
             var name = data[i]["player"]["name"];
-            var time = new Date(data[i]["time"]);
-            var content = name;
-            this.winnerHistoryBoard.appendChild(this.createButtonElement(content));
+            var options = {
+                year: 'numeric', month: 'numeric', day: 'numeric',
+                hour: 'numeric', minute: 'numeric', second: 'numeric',
+                hour12: false,
+                timeZone: 'Asia/Shanghai' 
+            };
+            var time = new Intl.DateTimeFormat('ja-JP', options).format(new Date(data[i]["time"]));
+            var content = name + " " + time;
+            mainView.winnerHistoryBoard.appendChild(mainView.createWinnerRecordMessageElement(content, data[i]["record"]));
         }
     });
 };
 
-MainView.prototype.createButtonElement = function(content){
+MainView.prototype.createWinnerRecordMessageElement = function(content, data){
+    var painter = this.painter;
+    var newMessageElm = document.createElement("P");
     var newButtonElm = document.createElement("BUTTON");
-    newButtonElm.innerHTML = content;
-    newButtonElm.className = "winnerHistoryButton";
-    return newButtonElm;
+    newButtonElm.innerHTML = "點擊觀看";
+    newButtonElm.className = "watchWinnerHistoryButton";
+    newButtonElm.addEventListener("click", function (e) {
+        console.log(data);
+        // todo 增加時間延遲
+        for (var i in data) {
+            var record = data[i];
+            console.log(record);
+            painter.drawCircle(record["chessName"]["color"], record.row, record.column);
+        }
+    });
+    newMessageElm.innerText = content;
+    newMessageElm.appendChild(newButtonElm);
+    return newMessageElm;
 };
 
-MainView.prototype.repaintCheckerBoard = function(){
+MainView.prototype.repaintCheckerBoard = function() {
     this.painter.clearCanvas();
     this.painter.drawCheckerBoard();
 };
