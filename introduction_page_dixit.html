@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tabletop Game Intro - 五子棋</title>
+        <meta name="theme-color" content="#536F87">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="stylesheets/introduction.css"/>
+    </head>
+
+    <body>
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./index.html">
+            <img src="./images/TGI.png" width="250">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./aboutus.html">關於我們
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">精選桌遊</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./introduction_page_gobang.html">五子棋</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./introduction_page_betrayal.html">山中小屋</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./introduction_page_dixit.html">說書人</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./history.html">桌遊歷史</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">內容分類</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./puzzle.html">益智</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./reasoning.html">推理</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./rpg.html">角色扮演</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./strategy.html">策略</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./etc.html">小品</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <img src="./images/dixit.png" class="w-100" alt="gobang" width="500" height="500" style="max-width: 100%">
+
+    <!--內容-->
+    <div id="intro-content" class="row">
+        <div class="col-2">
+            <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action" href="#list-item-1">簡介</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-2">遊戲內容物</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-3">遊戲目的</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-4">遊戲設置</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-5">遊戲規則</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-6">結束遊戲</a>
+            </div>
+        </div>
+        <div class="col-10" style="overflow:hidden">
+            <div id="intro-text" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height:100%;overflow:auto; position: relative;">
+                <h2>Dixit - 妙語說書人</h2>
+                <h3 id="list-item-1">簡介</h3>
+                <p>《妙語說書人》（英文名：Dixit）。利用想像力為每一張牌編出一個單字或句子，甚至只是某種聲音。不能難到大家都不懂，也不能簡單到大家都知道。考驗玩家與玩家之間的默契還有自己的語言能力。
+                </p>
+                <h3 id="list-item-2">遊戲內容物</h3>
+                <ul>
+                    <li> 1張記分板</li>
+                    <li> 84張紙牌</li>
+                    <li> 6種不同顏色的木製兔子（兔子米寶！）與搭配的</li>
+                    <li> 6種不同顏色的投票標記物</li>
+                    <li> 一份說明書</li>
+                </ul>
+                <h3 id="list-item-3">遊戲目的</h3>
+                <p>與其他遊戲不同。不能所有人都猜中自己的答案。只能中庸的引導其他玩家。
+                </p>
+                <h3 id="list-item-4">遊戲設置</h3>
+                <p>每位玩家挑選自己喜歡的兔子，並將兔子放在遊戲計分板的起始位置上。把84張紙牌洗勻後，每位玩家發六張牌，手牌為隱藏資訊。其他的牌面朝下作為牌堆待用。玩家有幾位就拿幾個投票標記物。
+                </p>
+                <h3 id="list-item-5">遊戲規則</h3>
+                <h4>說書</h4>
+                <p>選好起始玩家，起始玩家看自己的手牌，選出一張自己想出的牌，可以用任何方式敘述這張牌。講完後其他玩家也要從自己的手牌中選出跟說書人敘述相近的牌。全部玩家都選好牌後，將牌面朝下放置傳給說書人。由說書人洗牌後，放到指定位置上。例如從左到右為順序一、二、三。
+                </p>
+                <h4>投票</h4>
+                <p>此時除了說書人之外，其他人拿出投票標記物進行秘密投票，猜猜看到底哪一張才是說書人的牌（不可以投自己）。大家都猜好後一起掀開投票標記物。
+                </p>
+                <h4>開票計分</h4>
+                <p>說書人公布自己的牌是哪一張。並解釋理由。</p>
+                <ul>
+                    <li> 如果所有玩家都猜中說書人的牌，或所有玩家都沒猜到：</li>
+                </ul>
+                <p>代表說書人說的太爛（太明顯或太難）。說書人零分。其他玩家都加兩分。
+                </p>
+                <ul>
+                    <li> 有人猜對也有人猜錯：</li>
+                </ul>
+                <p>代表說書人說的很好。說書人可以得三分。猜中說書人的牌的玩家同樣得三分。
+                </p>
+                <ul>
+                    <li> 猜中說書人的牌的玩家的牌，被其他人投票為說書人：</li>
+                </ul>
+                <p>代表這位玩家成功誤導其他人，讓他們以為他才是說書人。每多一人投票就多加一分。
+                </p>
+                <p>算分後移動自己的兔子前進。將手牌補滿至六張後，照順序每位玩家輪流扮演說書人。用過的手牌放進棄牌堆。
+                </p>
+                <h3 id="list-item-6">結束遊戲</h3>
+                <p>當所有牌都被用完時遊戲結束。分數最高的玩家得勝。</p>
+                <p>或是兔子跑到終點，則遊戲結束。</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/BackTotheTop.js"></script>
+    </body>
+</html>
