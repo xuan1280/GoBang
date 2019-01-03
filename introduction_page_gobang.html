@@ -2,147 +2,164 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Board Game Introduction</title>
-        <link rel="stylesheet" href="stylesheets/introduction.css"/>
+        <title>Tabletop Game Intro - 五子棋</title>
+        <meta name="theme-color" content="#536F87">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="stylesheets/introduction.css"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
 
     <body>
-        <!--導覽列-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">各式桌遊介紹</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./index.html">
+            <img src="./images/TGI.png" width="250">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">首頁<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            分類
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">卡片</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">圖版</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">骰子</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">關於我們</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./aboutus.html">關於我們
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./well-chosen.html">精選桌遊</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./history.html">桌遊歷史</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">內容分類</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./puzzle.html">益智</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./reasoning.html">推理</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./rpg.html">角色扮演</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./strategy.html">策略</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./etc.html">小品</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./contactus.html">聯絡我們</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <img src="./images/gobang.jpg" class="w-100" alt="gobang">
+    <img src="./images/gobang.jpg" class="w-100" alt="gobang" width="500" height="500">
 
-        <!--內容-->
-        <div id="intro-content" class="row">
-            <div class="col-2">
-                <div id="list-example" class="list-group">
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">簡介</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">歷史</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-3">規則</a>
-                </div>
-            </div>
-            <div class="col-10" style="overflow:hidden">
-                <div id="intro-text" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height:100%;overflow:auto; position: relative;">
-                    <h4 id="list-item-1">五子棋</h4>
-                    <p>五子棋是一種兩人對弈的純策略型棋類遊戲，通常雙方分別使用黑白兩色的棋子，輪流下在棋盤直線與橫線的交叉點上，先在橫線、直線或斜對角線上形成5子連線者獲勝。　　　　
-                    </p>
+    <!--內容-->
+    <div id="intro-content" class="row">
+        <div class="col-2">
+            <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action" href="#list-item-1">簡介</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-2">歷史</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-3">規則</a>
+                <a class="list-group-item list-group-item-action" href="./gobang.html">五子棋線上玩</a>
 
-                    <p>棋子與棋盤
-                        因為棋子在落子後不能移動或拿掉，所以也可以用紙和筆來進行遊戲。</p>
-                    <h4 id="list-item-2">歷史</h4>
-                    <p>在日本的發明
-                        五子棋在日本平安時代就有，是頗受日本人歡迎的棋類。自1899年日本棋士黑岩淚香證明了原始規則的五子棋先下必勝後，五子棋邁入一條不斷改良的道路，經過數十年的修改、驗證、再修改，最終發展出加入禁手的五子棋，並經過公開徵名，稱為連珠，因此規則在日本成型，又稱為日式規則或連珠規則。原始規則依然有人在玩，也被稱為無禁規則、自由規則，有軟體可驗證黑手必勝[1]。
-
-                        連珠規則禁止先下的黑棋下出雙活三、雙四、長連（超過五子以上的連線），下出則判敗，此舉限制黑棋的取勝方式，白棋則增加逼迫黑子下出禁手來取勝的手段，使黑棋的優勢稍稍減少。對初學者來說禁手也許是一種障礙，但相較於原始規則，禁手使得雙方棋手必需更精準的掌握棋子落點，增加了連珠的技術性、複雜性及趣味性。
-
-                        又過了幾十年，人們發現單單加入禁手，尚無法完全平衡黑棋一子之先的優勢，因此在世界連珠錦標賽使用的「RIF規則」，其是在連珠規則的基礎上，又加入了三手交換及五手兩打，算第一個可以真正合乎公平競技的五子棋專業規則。
-
-                        在中國大陸、台灣的流傳
-                        過去在中國稱為五子棋的傳統棋類，並非現在屬於連棋類的五子棋，而是挑夾棋之類的夾擔棋遊戲[2][3][4][5]。
-
-                        中國文獻中，能確定是屬於連棋類的五子棋，最早紀錄之一是清末黃遵憲在1898年赴日參訪後，在著作《日本國志》寫：「亦有格五，其法布子成行以得五者勝。」[6]當時，中國也從日本引進了五子棋書，如《五連指南》，書中的棋盤採用圍棋棋盤，並且第一著由黑方下在天元[7]。
-
-                        中華人民共和國建國後，地方志紀錄五子棋是1950年代與陸軍棋、中國跳棋等新棋種一同出現，是中國近代才開始流傳的棋類[8][9][10]。
-
-                        在台灣的流傳則是由日本人引進，1917年6月在台灣創刊《聯珠新報》，創刊編輯是聯珠新報社臺北支局的吉田野人[11]。
-
-                        在世界的流傳
-                        五子棋的另一個分枝在歐洲發展為Gomoku。Gomoku僅使用「交換」來平衡黑子的優勢。他們推崇自由開局、可交換。大部分的規則未限制天元開局，因此開局的變化很大，在難以掌握對手開局的情況下，使定式、研究的分量降低，較為簡單易懂。其主要的規則是Swap2等。不管是哪種五子棋，棋手在先後手的觀念、空間的思維及對棋形的理解都十分重要。
-
-                        1988年國際連珠聯盟（Renju International Federation, RIF）成立，由日本、蘇聯、瑞典這3成員國在瑞典宣告創立，總部設在瑞典首都斯德哥爾摩。現在全世界已有數十個國家和地區成為國際連珠聯盟的正式會員。
-
-                        世界連珠錦標賽從1989年起，每兩年舉辦一次，至2017年已舉辦了十五屆。其中，愛沙尼亞獲得六次冠軍，日本四次，中國三次，俄羅斯兩次[12]。世界五目錦標賽（Gomoku World Championship）也從1989年起，每兩年舉辦一次，第二屆後停辦，直到2009年後復辦[13]。 而自1996年起，每兩年舉辦一次世界連珠團體錦標賽（Renju Team World Championship），由各國選手組隊參加[14]。
-
-                        由於電腦科技的進步，棋手大量研究RIF規則的變化，許多開局都有了定論，使得專業棋手可使用的開局變化越來越少，減少了變化也減少了棋手的創造性和發揮空間，更降低比賽的精彩度。為尋求新的出路，因而近年來產生了許多的新的試行規則，國際連珠聯盟在2009年第十一屆世錦賽試用山口規則（Yamaguchi rule）作為比賽規則，與RIF規則的差別在於五手兩打變成五手多打。最新的改革是在2017年第十五屆世錦賽試用索索夫-8規則（Soosyrv-8 rule），由假黑方第三手指定打點數目，更改為由假白方第四手指定，並在第四手後增加了一次交換機會。
-
-                        早年的世界連珠錦標賽多由日本棋手包辦前幾名，後來由歐洲棋手獨領風騷，近幾年則是中國棋手崛起。</p>
-                    <h4 id="list-item-3">規則</h4>
-                    <h5>原始規則</h5>
-                    <p>
-                        行棋：黑子先行，一人輪流一著下於棋盤空點處。
-                        勝負：先把五枚或以上己棋相連成任何橫縱斜方向為勝。（長連仍算勝利）
-                        西方稱之Free-style Gomoku規則。
-
-                        而從原始規則演變的現代五子棋，主要是以有無禁手作為區別。主要分成無禁手的Gomoku規則及有禁手的Renju規則。
-                    </p>
-
-                    <h5>無禁類規則</h5>
-                    <p>
-                        目前Gomoku世錦賽使用Swap2規則。
-
-                        主要是靠交換黑白雙方行棋權來使開局平衡，從而達到雙方公平競技的目的，無禁五子棋多採用此平衡方法。
-                    </p>
-
-                    <h5>Standard Gomoku規則</h5>
-                    <p>黑子先行，黑白雙方輪流落子。
-                        首先在橫、豎、斜方向上成五（連續五個己方棋子）者為勝。
-                        超過五子以上不算贏也不算輸。
-                        以Standard Gomoku規則為基礎，發展出Gomoku-Pro、Swap、Swap2規則。
-                    </p>
-                    <h5>Gomoku-Pro 規則</h5>
-                    <p>黑方在天元放第一子。
-                        白方下第二子。
-                        黑方在中央5×5區域外放第三子。
-                        此後按Standard Gomoku規則繼續進行。
-                        第一屆及第二屆Gomoku世錦賽的使用規則。
-                    </p>
-                    <h5>Swap規則</h5>
-                    <p>假先方在棋盤任意下三手（二黑一白）假後方有二種選擇。
-                        選黑。
-                        選白。
-                        此後按Standard Gomoku規則繼續進行。</p>
-                    <h5>Swap2規則</h5>
-                    <p>假先方在棋盤任意下三手（二黑一白）假後方有三種選擇。
-                        選黑。
-                        選白。
-                        下四、五兩手（一黑一白）再假先方選擇黑或白。
-                        此後按Standard Gomoku規則繼續進行。
-                        目前Gomoku世錦賽的使用規則。</p>
-
-                    <h5>一手交換規則</h5>
-                    <p>黑方下第一手，另一方選擇拿黑子或白子。
-                        此後按原始規則繼續進行（長連仍算勝利）。
-                        中國玩家近年推廣的無禁規則。</p>
-
-                    <h5>有禁類規則</h5>
-                    <p>目前Renju世錦賽使用索索夫-8規則。</p>
-
-                    <h4 id="list-item-4"><a href="./gobang.html" style="text-decoration:none;">線上玩</a></h4>
-
-                </div>
             </div>
         </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="col-10" style="overflow:hidden">
+            <div id="intro-text" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height:100%;overflow:auto; position: relative;">
+                <h3 id="list-item-1">五子棋</h3>
+                <p>五子棋是一種兩人對弈的純策略型棋類遊戲，通常雙方分別使用黑白兩色的棋子，輪流下在棋盤直線與橫線的交叉點上，先在橫線、直線或斜對角線上形成5子連線者獲勝。　　　　
+                </p>
+
+                <p>棋子與棋盤
+                    因為棋子在落子後不能移動或拿掉，所以也可以用紙和筆來進行遊戲。</p>
+                <h3 id="list-item-2">歷史</h3>
+                <p>在日本的發明
+                    五子棋在日本平安時代就有，是頗受日本人歡迎的棋類。自1899年日本棋士黑岩淚香證明了原始規則的五子棋先下必勝後，五子棋邁入一條不斷改良的道路，經過數十年的修改、驗證、再修改，最終發展出加入禁手的五子棋，並經過公開徵名，稱為連珠，因此規則在日本成型，又稱為日式規則或連珠規則。原始規則依然有人在玩，也被稱為無禁規則、自由規則，有軟體可驗證黑手必勝[1]。
+
+                    連珠規則禁止先下的黑棋下出雙活三、雙四、長連（超過五子以上的連線），下出則判敗，此舉限制黑棋的取勝方式，白棋則增加逼迫黑子下出禁手來取勝的手段，使黑棋的優勢稍稍減少。對初學者來說禁手也許是一種障礙，但相較於原始規則，禁手使得雙方棋手必需更精準的掌握棋子落點，增加了連珠的技術性、複雜性及趣味性。
+
+                    又過了幾十年，人們發現單單加入禁手，尚無法完全平衡黑棋一子之先的優勢，因此在世界連珠錦標賽使用的「RIF規則」，其是在連珠規則的基礎上，又加入了三手交換及五手兩打，算第一個可以真正合乎公平競技的五子棋專業規則。
+
+                    在中國大陸、台灣的流傳
+                    過去在中國稱為五子棋的傳統棋類，並非現在屬於連棋類的五子棋，而是挑夾棋之類的夾擔棋遊戲[2][3][4][5]。
+
+                    中國文獻中，能確定是屬於連棋類的五子棋，最早紀錄之一是清末黃遵憲在1898年赴日參訪後，在著作《日本國志》寫：「亦有格五，其法布子成行以得五者勝。」[6]當時，中國也從日本引進了五子棋書，如《五連指南》，書中的棋盤採用圍棋棋盤，並且第一著由黑方下在天元[7]。
+
+                    中華人民共和國建國後，地方志紀錄五子棋是1950年代與陸軍棋、中國跳棋等新棋種一同出現，是中國近代才開始流傳的棋類[8][9][10]。
+
+                    在台灣的流傳則是由日本人引進，1917年6月在台灣創刊《聯珠新報》，創刊編輯是聯珠新報社臺北支局的吉田野人[11]。
+
+                    在世界的流傳
+                    五子棋的另一個分枝在歐洲發展為Gomoku。Gomoku僅使用「交換」來平衡黑子的優勢。他們推崇自由開局、可交換。大部分的規則未限制天元開局，因此開局的變化很大，在難以掌握對手開局的情況下，使定式、研究的分量降低，較為簡單易懂。其主要的規則是Swap2等。不管是哪種五子棋，棋手在先後手的觀念、空間的思維及對棋形的理解都十分重要。
+
+                    1988年國際連珠聯盟（Renju International Federation, RIF）成立，由日本、蘇聯、瑞典這3成員國在瑞典宣告創立，總部設在瑞典首都斯德哥爾摩。現在全世界已有數十個國家和地區成為國際連珠聯盟的正式會員。
+
+                    世界連珠錦標賽從1989年起，每兩年舉辦一次，至2017年已舉辦了十五屆。其中，愛沙尼亞獲得六次冠軍，日本四次，中國三次，俄羅斯兩次[12]。世界五目錦標賽（Gomoku World Championship）也從1989年起，每兩年舉辦一次，第二屆後停辦，直到2009年後復辦[13]。 而自1996年起，每兩年舉辦一次世界連珠團體錦標賽（Renju Team World Championship），由各國選手組隊參加[14]。
+
+                    由於電腦科技的進步，棋手大量研究RIF規則的變化，許多開局都有了定論，使得專業棋手可使用的開局變化越來越少，減少了變化也減少了棋手的創造性和發揮空間，更降低比賽的精彩度。為尋求新的出路，因而近年來產生了許多的新的試行規則，國際連珠聯盟在2009年第十一屆世錦賽試用山口規則（Yamaguchi rule）作為比賽規則，與RIF規則的差別在於五手兩打變成五手多打。最新的改革是在2017年第十五屆世錦賽試用索索夫-8規則（Soosyrv-8 rule），由假黑方第三手指定打點數目，更改為由假白方第四手指定，並在第四手後增加了一次交換機會。
+
+                    早年的世界連珠錦標賽多由日本棋手包辦前幾名，後來由歐洲棋手獨領風騷，近幾年則是中國棋手崛起。</p>
+                <h3 id="list-item-3">規則</h3>
+                <h5>原始規則</h5>
+                <p>
+                    行棋：黑子先行，一人輪流一著下於棋盤空點處。
+                    勝負：先把五枚或以上己棋相連成任何橫縱斜方向為勝。（長連仍算勝利）
+                    西方稱之Free-style Gomoku規則。
+
+                    而從原始規則演變的現代五子棋，主要是以有無禁手作為區別。主要分成無禁手的Gomoku規則及有禁手的Renju規則。
+                </p>
+
+                <h5>無禁類規則</h5>
+                <p>
+                    目前Gomoku世錦賽使用Swap2規則。
+
+                    主要是靠交換黑白雙方行棋權來使開局平衡，從而達到雙方公平競技的目的，無禁五子棋多採用此平衡方法。
+                </p>
+
+                <h5>Standard Gomoku規則</h5>
+                <p>黑子先行，黑白雙方輪流落子。
+                    首先在橫、豎、斜方向上成五（連續五個己方棋子）者為勝。
+                    超過五子以上不算贏也不算輸。
+                    以Standard Gomoku規則為基礎，發展出Gomoku-Pro、Swap、Swap2規則。
+                </p>
+                <h5>Gomoku-Pro 規則</h5>
+                <p>黑方在天元放第一子。
+                    白方下第二子。
+                    黑方在中央5×5區域外放第三子。
+                    此後按Standard Gomoku規則繼續進行。
+                    第一屆及第二屆Gomoku世錦賽的使用規則。
+                </p>
+                <h5>Swap規則</h5>
+                <p>假先方在棋盤任意下三手（二黑一白）假後方有二種選擇。
+                    選黑。
+                    選白。
+                    此後按Standard Gomoku規則繼續進行。</p>
+                <h5>Swap2規則</h5>
+                <p>假先方在棋盤任意下三手（二黑一白）假後方有三種選擇。
+                    選黑。
+                    選白。
+                    下四、五兩手（一黑一白）再假先方選擇黑或白。
+                    此後按Standard Gomoku規則繼續進行。
+                    目前Gomoku世錦賽的使用規則。</p>
+
+                <h5>一手交換規則</h5>
+                <p>黑方下第一手，另一方選擇拿黑子或白子。
+                    此後按原始規則繼續進行（長連仍算勝利）。
+                    中國玩家近年推廣的無禁規則。</p>
+
+                <h5>有禁類規則</h5>
+                <p>目前Renju世錦賽使用索索夫-8規則。</p>
+
+            </div>
+        </div>
+    </div>
     </body>
+    <script type="text/javascript" src="javascripts/BackTotheTop.js"></script>
 </html>
