@@ -29,6 +29,7 @@ MainView.prototype.initView = function(){
 	this.canvas = document.getElementById("checkerboard");
     this.painter = new Painter(this.canvas);
     this.historyBoard = document.getElementById("historyBoard");
+    this.winnerHistoryBoard = document.getElementById("winnerHistoryBoard");
     this.newGameBtn = document.getElementById("newGameBtn");
     this.confirmBtn = document.getElementById("confirmBtn");
     this.cancelBtn = document.getElementById("cancelBtn");
@@ -37,6 +38,7 @@ MainView.prototype.initView = function(){
     this.adjustContainerToReduceVacancy();
     this.addCanvasListeners();
     this.addButtonListeners();
+    this.getWinnerHistory();
     this.painter.drawCheckerBoard();
 }
 
@@ -113,6 +115,25 @@ MainView.prototype.addButtonListeners = function(){
     this.regretBtn.addEventListener("click", function(e) {
         mainView.goBang.regretLastStep();
     });
+};
+
+MainView.prototype.getWinnerHistory = function () {
+    $.get("/getWinnerHistory", function (data) {
+        console.log(data);
+        for (var i in data) {
+            var name = data[i]["player"]["name"];
+            var time = new Date(data[i]["time"]);
+            var content = name;
+            this.winnerHistoryBoard.appendChild(this.createButtonElement(content));
+        }
+    });
+};
+
+MainView.prototype.createButtonElement = function(content){
+    var newButtonElm = document.createElement("BUTTON");
+    newButtonElm.innerHTML = content;
+    newButtonElm.className = "winnerHistoryButton";
+    return newButtonElm;
 };
 
 MainView.prototype.repaintCheckerBoard = function(){
