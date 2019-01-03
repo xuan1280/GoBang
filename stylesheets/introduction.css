@@ -51,6 +51,21 @@ body {
     overflow-y: auto;
 }
 
+/*aboutus*/
+#nickname{
+    font-size: 20px;
+    color: gray;
+}
+.desc_wrapper{
+    margin:  20px 10px;
+}
+#self_intro{
+    margin:  0 50px;
+}
+#self_hr{
+    color: coral;
+}
+
  /* for Chrome */
 #intro-text::-webkit-scrollbar {
     display: none;
@@ -91,7 +106,7 @@ body {
 }
 .post-slide11 .post-title{
     margin:25px 0 15px 0;
-    padding:0 15px;
+    padding-bottom: 15px;
 }
 .post-slide11 .post-title:before{
     content:"";
