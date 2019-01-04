@@ -7,6 +7,8 @@
     }
 }
 
+
+
 #carousel-text{
     text-shadow: black 0.1em 0.1em 0.2em
 }
@@ -93,14 +95,6 @@ body {
 .post-slide11:hover .over-layer{
     opacity:1;
 }
-.post-slide11 .over-layer:after{
-    content: "+";
-    font-size: 52px;
-    color: #fff;
-    position: absolute;
-    top: 31%;
-    left:42%;
-}
 .post-slide11 .post-img img{
     width: 100%;
     height: auto;
@@ -182,11 +176,15 @@ h3.h3{text-align:center;padding:1.5em 0em;text-transform:capitalize;font-size:1.
     text-decoration: none;
 }
 .post-slide2 .post-description{
+    display: none;
     font-size: 15px;
     color: #676767;
     line-height: 24px;
     margin-bottom: 14px;
 }
+@media only screen and (min-width:767px) {
+    .post-slide2 .post-description{ display: inline; }
+  }
 .post-slide2 .post-bar{
     padding: 0;
     margin-bottom: 15px;
@@ -218,7 +216,7 @@ h3.h3{text-align:center;padding:1.5em 0em;text-transform:capitalize;font-size:1.
 .post-slide2 .read-more{
     display: inline-block;
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bold;
     color: #fff;
     background: #e7989a;
@@ -226,6 +224,9 @@ h3.h3{text-align:center;padding:1.5em 0em;text-transform:capitalize;font-size:1.
     text-transform: capitalize;
     transition: all 0.30s linear;
 }
+@media only screen and (min-width:767px) {
+    .post-slide2 .read-more{ font-size: 14px; }
+  }
 .post-slide2 .read-more:hover{
     background: #333;
     text-decoration: none;
