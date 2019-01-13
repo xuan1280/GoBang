@@ -138,18 +138,24 @@ MainView.prototype.getWinnerHistory = function () {
 };
 
 MainView.prototype.createWinnerRecordMessageElement = function(content, data){
-    var painter = this.painter;
+    var mainView = this;
     var newMessageElm = document.createElement("P");
     var newButtonElm = document.createElement("BUTTON");
     newButtonElm.innerHTML = "點擊觀看";
     newButtonElm.className = "watchWinnerHistoryButton";
     newButtonElm.addEventListener("click", function (e) {
+        mainView.repaintCheckerBoard();
         console.log(data);
-        // todo 增加時間延遲
         for (var i in data) {
-            var record = data[i];
-            console.log(record);
-            painter.drawCircle(record["chessName"]["color"], record.row, record.column);
+			(function(n) {
+				setTimeout(function(){
+					var record = data[n];
+					console.log(record);
+					mainView.painter.drawCircle(record["chessName"]["color"], record.row, record.column);
+					var audio = new Audio('sounds/put_chess.mp3');
+					audio.play();
+				}, i*1000);
+			}(i));
         }
     });
     newMessageElm.innerText = content;
